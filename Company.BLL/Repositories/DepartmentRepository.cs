@@ -18,6 +18,7 @@ namespace Company.BLL.Repositories
         {
             _context = context;
         }
+
         public IEnumerable<Department> GetAll()
         {
 
