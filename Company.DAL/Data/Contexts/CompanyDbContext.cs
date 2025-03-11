@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Company.DAL.Data.Contexts
 {
-    internal class CompanyDbContext : DbContext
+    public class CompanyDbContext : DbContext
     {
-        public CompanyDbContext()
+        public CompanyDbContext(DbContextOptions<CompanyDbContext> option) : base(option) 
         {
 
         }
@@ -20,10 +20,10 @@ namespace Company.DAL.Data.Contexts
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(modelBuilder);
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-           optionsBuilder.UseSqlServer("Server = .;Database = Company; Trusted_Connection = True; TrustServerCertificate =True");
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //   optionsBuilder.UseSqlServer("Server = .;Database = Company; Trusted_Connection = True; TrustServerCertificate =True");
+        //}
         public DbSet<Department> Departments { get; set; }
     }
 }
